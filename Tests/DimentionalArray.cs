@@ -10,13 +10,13 @@ namespace DimentionalArray
         public class Little
         {
             [TestMethod]
-            public void DijkstraFrom0() => NS.Dijkstra(0);
+            public void DijkstraFrom0() => NS.ExecDijkstra(0);
 
             [TestMethod]
-            public void DijkstraFrom2() => NS.Dijkstra(2);
+            public void DijkstraFrom2() => NS.ExecDijkstra(2);
 
             [TestMethod]
-            public void DijkstraRandomGraph() => NS.Dijkstra(0, 6, 10);
+            public void DijkstraRandomGraph() => NS.ExecDijkstra(0, 6, 10);
         };
 
 
@@ -24,13 +24,13 @@ namespace DimentionalArray
         public class Big
         {
             [TestMethod]
-            public void DijkstraRandomGraph() => NS.Dijkstra(0, 1000, 100);
+            public void DijkstraRandomGraph() => NS.ExecDijkstra(0, 1000, 100);
 
             [TestMethod]
-            public void DijkstraRandomGraphLowDistribution() => NS.Dijkstra(0, 15000, 100, 0.4f);
+            public void DijkstraRandomGraphLowDistribution() => NS.ExecDijkstra(0, 15000, 100, 0.4f);
 
             [TestMethod]
-            public void DijkstraRandomGraphHightDistribution() => NS.Dijkstra(0, 15000, 100, 0.8f);
+            public void DijkstraRandomGraphHightDistribution() => NS.ExecDijkstra(0, 15000, 100, 0.8f);
         };
     }
 

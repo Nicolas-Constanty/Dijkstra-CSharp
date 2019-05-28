@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra", "Djikstra\Dijkstra.csproj", "{48D3A782-0338-47BC-9121-8EE53C2A4C32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra", "Dijkstra\Dijkstra.csproj", "{48D3A782-0338-47BC-9121-8EE53C2A4C32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdjencyMatrix", "Tests\AdjencyMatrix.csproj", "{7C520B79-C089-49CE-929B-B9206B24EC02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{A06F1C73-87B3-40E7-A020-55B9D91588FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdjacencyList", "AdjacencyList\AdjacencyList.csproj", "{22363CCD-F0C6-4DD9-AC80-674F4A4C336C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{7C520B79-C089-49CE-929B-B9206B24EC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C520B79-C089-49CE-929B-B9206B24EC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C520B79-C089-49CE-929B-B9206B24EC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06F1C73-87B3-40E7-A020-55B9D91588FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06F1C73-87B3-40E7-A020-55B9D91588FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06F1C73-87B3-40E7-A020-55B9D91588FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06F1C73-87B3-40E7-A020-55B9D91588FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22363CCD-F0C6-4DD9-AC80-674F4A4C336C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22363CCD-F0C6-4DD9-AC80-674F4A4C336C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22363CCD-F0C6-4DD9-AC80-674F4A4C336C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22363CCD-F0C6-4DD9-AC80-674F4A4C336C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
