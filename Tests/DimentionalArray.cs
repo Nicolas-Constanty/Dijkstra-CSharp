@@ -27,10 +27,10 @@ namespace DimentionalArray
             public void DijkstraRandomGraph() => NS.ExecDijkstra(0, 1000, 100);
 
             [TestMethod]
-            public void DijkstraRandomGraphLowDistribution() => NS.ExecDijkstra(0, 15000, 100, 0.4f);
+            public void DijkstraRandomGraphLowDistribution() => NS.ExecDijkstra(0, 10000, 100, 0.4f);
 
             [TestMethod]
-            public void DijkstraRandomGraphHightDistribution() => NS.ExecDijkstra(0, 15000, 100, 0.8f);
+            public void DijkstraRandomGraphHightDistribution() => NS.ExecDijkstra(0, 10000, 100, 0.8f);
         };
     }
 
@@ -54,10 +54,10 @@ namespace DimentionalArray
             public void DijkstraRandomGraph() => NS.DijkstraPath(0, 1000, 100);
 
             [TestMethod]
-            public void DijkstraRandomGraphLowDistribution() => NS.DijkstraPath(0, 15000, 100, 0.4f);
+            public void DijkstraRandomGraphLowDistribution() => NS.DijkstraPath(0, 10000, 100, 0.4f);
 
             [TestMethod]
-            public void DijkstraRandomGraphHightDistribution() => NS.DijkstraPath(0, 15000, 100, 0.8f);
+            public void DijkstraRandomGraphHightDistribution() => NS.DijkstraPath(0, 10000, 100, 0.8f);
         }
     }
 }

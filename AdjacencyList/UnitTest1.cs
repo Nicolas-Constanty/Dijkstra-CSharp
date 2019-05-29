@@ -42,6 +42,47 @@ namespace AdjacencyList
             Assert.IsTrue(results[7] == 8);
             Assert.IsTrue(results[8] == 14);
         }
+ /*          2        8
+         A ----- B ------ G  
+         | \     | \      |3
+         |  \    | 2\   1 |
+        5|  3\  4|    E - F
+         |    \  | 3/
+         |     \ | /
+         C ----- D ------ H
+             3        1
+*/
+        [TestMethod]
+        public void ReadmeExemple()
+        {
+            var size = 8;
+            var g = new Graph(size);
+
+            g.AddEdge(0, 1, 2);
+            g.AddEdge(0, 2, 5);
+            g.AddEdge(0, 3, 3);
+
+            g.AddEdge(1, 3, 4);
+            g.AddEdge(1, 4, 2);
+            g.AddEdge(1, 6, 8);
+
+            g.AddEdge(2, 3, 3);
+
+            g.AddEdge(3, 4, 3);
+            g.AddEdge(3, 7, 1);
+
+            g.AddEdge(4, 5, 1);
+
+            g.AddEdge(5, 6, 3);
+            
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine($"==> Start from {i}");
+                var results = Graph.Dijkstra(g, i);
+                Djikstra.Debug.PrintResult(results, i);
+            }
+            
+        }
 
         [TestMethod]
         public void LittleRandom()
