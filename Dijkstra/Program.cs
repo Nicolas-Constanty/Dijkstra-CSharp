@@ -10,6 +10,7 @@ namespace Dijkstra
     {
         static void Main(string[] args)
         {
+            var test = new byte[100000];
         }
     }
 }

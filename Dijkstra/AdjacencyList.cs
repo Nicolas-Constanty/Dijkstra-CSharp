@@ -1,29 +1,48 @@
 ﻿using Djikstra;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace Dijkstra
 {
+    [Serializable]
     public class Edge
     {
+        [XmlAttribute]
+        public int src;
+        [XmlAttribute]
         public int dest;
+        [XmlAttribute]
         public int distance;
+        [XmlIgnore]
         public Edge next;
     }
-
     public struct AdjacencyList
     {
+        [XmlIgnore]
         public Edge root;
     }
 
+    [XmlRootAttribute("Graph", IsNullable = false)]
     public class Graph
     {
+        [XmlIgnore]
         public AdjacencyList[] data;
+        [XmlIgnore]
         public MinHeapDijkstra minHeap;
+        [XmlAttribute("Capacity")]
+        public int _capacity;
+        [XmlArray("Edges")]
+        public List<Edge> _edges = new List<Edge>();
 
+        public Graph() { }
         public Graph(int size)
         {
-            data = new AdjacencyList[size];
+            _capacity = size;
+            data = new AdjacencyList[_capacity];
         }
 
         public int Length()
@@ -37,12 +56,15 @@ namespace Dijkstra
             return edge;
         }
 
-        public void AddEdge(int src, int dest, int distance)
+        public void AddEdge(int src, int dest, int distance, bool deserialize=false)
         {
             // From src to dest
             var edge = CreateNewEdge(dest, distance);
+            edge.src = src;
             edge.next = data[src].root;
             data[src].root = edge;
+            if (!deserialize)
+                _edges.Add(edge);
 
             //From dest to src
             edge = CreateNewEdge(src, distance);
@@ -84,6 +106,62 @@ namespace Dijkstra
             }
 
             return distances;
+        }
+
+        public void Save(string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Graph));
+            TextWriter writer = new StreamWriter(filename);
+
+            serializer.Serialize(writer, this);
+            writer.Close();
+        }
+
+        public static Graph Load(string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Graph));
+            var fs = new FileStream(filename, FileMode.Open);
+            var g = (Graph)serializer.Deserialize(fs);
+            g.data = new AdjacencyList[g._capacity];
+            foreach (var edge in g._edges)
+            {
+                g.AddEdge(edge.src, edge.dest, edge.distance, true);
+            }
+            fs.Close();
+            return g;
+        }
+
+        public static int[,] ConvertToMatrix(Graph g)
+        {
+            var matrix = new int[g._capacity, g._capacity];
+            for (int i = 0; i < g.data.Length; i++)
+            {
+                var adjList = g.data[i];
+                var root = adjList.root;
+                while(root != null)
+                {
+                    matrix[i, root.dest] = root.distance;
+                    root = root.next;
+                }
+            }
+            return matrix;
+        }
+
+        public static int[][] ConvertToJaggedMatrix(Graph g)
+        {
+            var matrix = new int[g._capacity][];
+            for (int i = 0; i < g.data.Length; i++)
+            {
+                var adjList = g.data[i];
+                var root = adjList.root;
+                matrix[i] = new int[g._capacity];
+                while (root != null)
+                {
+                    matrix[i][root.dest] = root.distance;
+                    root = root.next;
+                }
+            }
+            return matrix;
         }
     }
 }

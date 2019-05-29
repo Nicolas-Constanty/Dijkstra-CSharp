@@ -38,6 +38,7 @@ Implementation of Dijkstra's algorithm in C#, just for learning purpose
 ### Adjacency Matrix
 - Easy to understand
 - Easy to implement
+- Memory allocation limit due to c# limitation (2Go per object)
 - Algorithm complexity *O(N²)*
 
 ### Adjacency List
@@ -45,3 +46,33 @@ Implementation of Dijkstra's algorithm in C#, just for learning purpose
 - Use a custom implementation of a MinHeap
 - Algorithm complexity *O(E Log N)*
 
+### Benchmarks
+
+*20000 vertices, max edge = 5, distribution=100%*
+````
+Time for AdjacencyList = 26 ms
+    19384,62 % faster than AdjacencyMatrix
+    16992,31 % faster than AdjacencyJaggedMatrix
+
+Time for AdjacencyMatrix = 5066 ms
+    19384,62 % slower than AdjacencyList
+    14 % slower than AdjacencyJaggedMatrix
+
+Time for AdjacencyJaggedMatrix = 4444 ms
+    16992,31 % slower than AdjacencyList
+    14 % faster than AdjacencyMatrix
+````
+*20000 vertices, max edge = 5, distribution=50%*
+````
+Time for AdjacencyList = 8 ms
+    17300 % faster than AdjacencyMatrix
+    17062,5 % faster than AdjacencyJaggedMatrix
+
+Time for AdjacencyMatrix = 1392 ms
+    17300 % slower than AdjacencyList
+    1,38 % slower than AdjacencyJaggedMatrix
+
+Time for AdjacencyJaggedMatrix = 1373 ms
+    17062,5 % slower than AdjacencyList
+    1,38 % faster than AdjacencyMatrix
+````
