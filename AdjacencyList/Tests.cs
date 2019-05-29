@@ -211,6 +211,28 @@ namespace Tests
             Assert.IsTrue(results[7] == 4);
         }
 
+        [TestMethod]
+        public void SerializeDeserializeMatrix()
+        {
+            var g = GenerateExemple();
+            var filename = "graph.xml";
+            g.Save(filename);
+            g = Graph.Load(filename);
+
+            var startingPoint = 0;
+            var results = Dijkstra.AdjacencyMatrix.Dijkstra(Graph.ConvertToJaggedMatrix(g), startingPoint);
+            Djikstra.Debug.PrintResult(results, startingPoint);
+
+            Assert.IsTrue(results[0] == 0);
+            Assert.IsTrue(results[1] == 2);
+            Assert.IsTrue(results[2] == 5);
+            Assert.IsTrue(results[3] == 3);
+            Assert.IsTrue(results[4] == 4);
+            Assert.IsTrue(results[5] == 5);
+            Assert.IsTrue(results[6] == 8);
+            Assert.IsTrue(results[7] == 4);
+        }
+
         public static Graph GenerateRandomGraph(int vertexCount, int maxEdgeCount, int maxDistance, float edgeDistribution=1f)
         {
             var g = new Graph(vertexCount);

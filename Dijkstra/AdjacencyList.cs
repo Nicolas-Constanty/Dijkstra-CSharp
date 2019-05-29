@@ -141,6 +141,7 @@ namespace Dijkstra
                 while(root != null)
                 {
                     matrix[i, root.dest] = root.distance;
+                    matrix[root.dest, i] = root.distance;
                     root = root.next;
                 }
             }
@@ -152,12 +153,16 @@ namespace Dijkstra
             var matrix = new int[g._capacity][];
             for (int i = 0; i < g.data.Length; i++)
             {
+                matrix[i] = new int[g._capacity];
+            }
+            for (int i = 0; i < g.data.Length; i++)
+            {
                 var adjList = g.data[i];
                 var root = adjList.root;
-                matrix[i] = new int[g._capacity];
                 while (root != null)
                 {
                     matrix[i][root.dest] = root.distance;
+                    matrix[root.dest][i] = root.distance;
                     root = root.next;
                 }
             }
